@@ -19,6 +19,12 @@
     "resources": {
         "media": [
             {
+                "menuIcon": true,
+                "type": "png",
+                "name": "LOGO",
+                "file": "images/menu_icon_simpleweather.png"
+            },
+            {
                 "characterRegex": "[:A-Z]",
                 "type": "font",
                 "name": "METEOCONS_38",
@@ -111,7 +117,6 @@
                 "file": "images/2.png"
             },
             {
-                "menuIcon": true,
                 "type": "png",
                 "name": "IMAGE_MENU_ICON",
                 "file": "images/menu_icon_simplicity.png"

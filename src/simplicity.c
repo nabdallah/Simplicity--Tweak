@@ -164,10 +164,10 @@ void handle_init(void) {
   Layer *weather_holder = layer_create(GRect(0, 0, 144, 50));
   layer_add_child(window_layer, weather_holder);
 
-  icon_layer = bitmap_layer_create(GRect(8, 0, 40, 40));
+  icon_layer = bitmap_layer_create(GRect(8, 7, 40, 40));
   layer_add_child(weather_holder, bitmap_layer_get_layer(icon_layer));
 
-  temp_layer = text_layer_create(GRect(32, 3, 144 - 40, 28));
+  temp_layer = text_layer_create(GRect(32, 10, 144 - 40, 28));
   text_layer_set_text_color(temp_layer, GColorWhite);
   text_layer_set_background_color(temp_layer, GColorClear);
   text_layer_set_font(temp_layer,
@@ -192,7 +192,11 @@ void handle_init(void) {
   text_layer_set_font(text_date_layer, fonts_load_custom_font(roboto_21));
   layer_add_child(date_holder, text_layer_get_layer(text_date_layer));
 
-  line_layer = layer_create(GRect(8, 51, 144-16, 2));
+  line_layer = layer_create(GRect(8, 47, 144-16, 2));
+  layer_set_update_proc(line_layer, line_layer_update_callback);
+  layer_add_child(date_holder, line_layer);
+	
+  line_layer = layer_create(GRect(8, 0, 144-16, 2));
   layer_set_update_proc(line_layer, line_layer_update_callback);
   layer_add_child(date_holder, line_layer);
 
@@ -200,6 +204,7 @@ void handle_init(void) {
   text_time_layer = text_layer_create(GRect(7, 45, 144-7, 49));
   text_layer_set_text_color(text_time_layer, GColorWhite);
   text_layer_set_background_color(text_time_layer, GColorClear);
+  text_layer_set_text_alignment(text_time_layer, GTextAlignmentCenter);
   text_layer_set_font(text_time_layer, fonts_load_custom_font(roboto_49));
   layer_add_child(date_holder, text_layer_get_layer(text_time_layer));
 
@@ -219,7 +224,7 @@ void handle_init(void) {
                 NULL, NULL);
 
   // FIXME testing code
-  battery_text_layer = text_layer_create(GRect(0, 75, 144-8, 30));
+  battery_text_layer = text_layer_create(GRect(0, 53, 144-8, 30));
   text_layer_set_text_color(battery_text_layer, GColorWhite);
   text_layer_set_background_color(battery_text_layer, GColorClear);
   text_layer_set_font(battery_text_layer, fonts_load_custom_font(roboto_21));
